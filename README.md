@@ -76,3 +76,9 @@ fn handle_connection(mut stream: TcpStream) {
 ```
 
 - Bentuk *response* yang akan dikembalikan berdasarkan *request* yang diberikan. *Response* `hello.html` hanya akan dikembalikan jika *client* melakukan request ke `/`. Jika tidak, akan mengembalikan `404.html`.
+
+## Reflection 4 - Single Threaded
+
+- Setelah mendapat request ke `/sleep`, *server* masuk ke dalam kode yang terdapat `thread::sleep`.
+- Karena ini *single-threaded*, *request* selanjutnya harus menunggu *request* sebelumnya (yang terdapat jeda) untuk selesai sebelum menerima *request* selanjutnya.
+- Setelah `thread:sleep` selesai, baru *request* selanjutnya bisa diterima.
